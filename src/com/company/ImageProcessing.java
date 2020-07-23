@@ -153,11 +153,11 @@ public class ImageProcessing {
 //         create another image for output
 //         it has the same size as original image
 
-//        new ImageProcessing().generateGrayScale();
-//        new ImageProcessing().generateRed();
-//        new ImageProcessing().generateBlue();
-//        new ImageProcessing().generateGreen();
-//        new ImageProcessing().resizedImage(1400, 1800);
+        new ImageProcessing().generateGrayScale();
+        new ImageProcessing().generateRed();
+        new ImageProcessing().generateBlue();
+        new ImageProcessing().generateGreen();
+        new ImageProcessing().resizedImage(1400, 1800);
 
         new ImageProcessing().processToAssignment();
 
