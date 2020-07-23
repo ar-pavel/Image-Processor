@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.*;
 import java.io.File;
+import java.math.BigInteger;
 
 public class ImageProcessing {
     public static Image image;
@@ -98,8 +99,35 @@ public class ImageProcessing {
         resizedImage.save("resized Image.png");
     }
 
+
     public void processToAssignment(){
-        
+        /**
+         * Task:
+         * Next, in main function, you need to input an image (either as command line argument or in standard input string),
+         * shrink it so that the height of the new image is 720 (width of the new image will be set so that height:width for both images are the same),
+         * make it an 8-bit image,
+         * resize it back to the original size and save
+         * (you can take as input the saving path from users too).
+         * */
+
+
+        Image shrunkImage = image.resizedImage(720, 720 * width / height);
+
+        // Print shrinking info
+        System.out.println("Original Image Info : ");
+        int gcd = BigInteger.valueOf(height).gcd(BigInteger.valueOf(width)).intValue();
+        System.out.printf("Height : %d,\twidth :%d,\tHeight:Width = %d:%d = %s%n", height, width, height / gcd, width / gcd, 1.0 * height / width);
+
+        System.out.println("Shrunk Image Info : ");
+        gcd = BigInteger.valueOf(shrunkImage.getHeight()).gcd(BigInteger.valueOf(shrunkImage.getWidth())).intValue();
+        System.out.printf("Height : %d,\twidth :%d,\tHeight:Width = %d:%d = %s%n", shrunkImage.getHeight(), shrunkImage.getWidth(), shrunkImage.getHeight() / gcd, shrunkImage.getWidth() / gcd, 1.0 * height / width);
+
+        // save shrunk image
+        shrunkImage.save("shrunkImage.png");
+
+
+
+
 
     }
 
@@ -118,13 +146,13 @@ public class ImageProcessing {
         // create another image for output
         // it has the same size as original image
 
-        new ImageProcessing().generateGrayScale();
-        new ImageProcessing().generateRed();
-        new ImageProcessing().generateBlue();
-        new ImageProcessing().generateGreen();
+//        new ImageProcessing().generateGrayScale();
+//        new ImageProcessing().generateRed();
+//        new ImageProcessing().generateBlue();
+//        new ImageProcessing().generateGreen();
+//        new ImageProcessing().resizedImage(1400, 1800);
 
-        new ImageProcessing().resizedImage(1400, 1800);
-
+        new ImageProcessing().processToAssignment();
 
 
 
