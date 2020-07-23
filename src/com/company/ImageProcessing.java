@@ -1,14 +1,42 @@
 package com.company;
 
-import com.company.Image;
+import javax.swing.*;
+import java.io.File;
 
 public class ImageProcessing {
+
+    // Image reader
+    public static String readImage() {
+
+        /**
+         * Task:
+         *  - Take input using JFileChooser
+         *  - Read the input file
+         *  - build a Directed graph from the input data
+         * @return Path to the user selected image
+         */
+
+
+        // Open file reader window
+        JFileChooser choice = new JFileChooser(new File("./Images/src"));
+
+        //check if user selected a valid file then proceed further
+        while(true){
+            int option = choice.showOpenDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+                return choice.getSelectedFile().getAbsolutePath();
+            }else{
+                System.err.println("No file selected!\nPlease select a valid image file.");
+//                System.exit(0);
+            }
+        }
+    }
 
 
     public static void main(String args[]) {
 
         // load an image
-        Image image = new Image(args[0]);
+        Image image = new Image(readImage());
 
         // print height and width
         System.out.println("Height is " + image.getHeight() + " and width is " + image.getWidth());
@@ -29,7 +57,7 @@ public class ImageProcessing {
 
             }
         }
-        red.save("r.png");
+//        red.save("r.png");
 
         Image green = new Image(height, width);
 
@@ -40,7 +68,7 @@ public class ImageProcessing {
 
             }
         }
-        green.save("g.png");
+//        green.save("g.png");
 
         Image blue = new Image(height, width);
 
@@ -51,7 +79,7 @@ public class ImageProcessing {
 
             }
         }
-        blue.save("b.png");
+//        blue.save("b.png");
 
         Image grayscale = new Image(height, width);
 
@@ -68,7 +96,13 @@ public class ImageProcessing {
         }
 
         // save the output image
-        grayscale.save("grayscale.png");
+//        grayscale.save("grayscale.png");
+
+        Image resizedImage = image.resizedImage(1800, 3400);
+
+        resizedImage.save("resized Image.png");
+
+
 
     }
 }

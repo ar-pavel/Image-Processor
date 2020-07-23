@@ -1,10 +1,12 @@
 package com.company;
 
-import java.io.*;
-import java.awt.image.*;
-import javax.imageio.*;
-import java.awt.Color;
-import java.lang.Math;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import static java.lang.Math.*;
 
 public class Image {
 
@@ -29,7 +31,7 @@ public class Image {
     //it takes a file path as input and saves image to that path
     void save(String path) {
         try {
-            File img = new File(path);
+            File img = new File("Images/output/" + path);
             ImageIO.write(image, "PNG", img);
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,7 +70,8 @@ public class Image {
 
     Image to8bit(){
         /**
-         *
+         * Task:
+         * @return a new image with ........
          * */
         Image res = new Image("demo");
 
@@ -80,9 +83,31 @@ public class Image {
          * Task: convert image to a new one according to the given height
          * @param newHeight Height of the the new Image to be
          * @param newWidth Width of the the new Image to be
-         *                 
+         * @return a new image with correspond size
          * */
-        Image res = new Image("demo");
+
+        int curHeight = this.image.getHeight();
+        int curWidth = this.image.getWidth();
+
+        System.err.println("Image Transformation Info : ");
+        System.out.println("Original image height : " + curHeight + ",\tNew image height : " + newHeight);
+        System.out.println("Original image width : " + curWidth + ",\tNew image width : " + newWidth);
+
+        Image res = new Image(newHeight, newWidth);
+
+        for (int x = 0; x < newWidth; x++) {
+            for (int y = 0; y < newHeight; y++) {
+                int ay = (int) ceil(y * (curHeight-1) / (newHeight-1));
+                int ax = (int) ceil(x * (curWidth-1) / (newWidth-1));
+//                System.err.println("x : " + x + ", ax : " + ax + ", y : " + y + ", ay : "+ ay);
+                int r = getPixelR(ax, ay);
+                int g = getPixelG(ax, ay);
+                int b = getPixelB(ax, ay);
+                res.setPixel(x, y, r, g, b);
+
+
+            }
+        }
 
         return res;
     }
