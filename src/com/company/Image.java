@@ -70,10 +70,26 @@ public class Image {
 
     Image to8bit(){
         /**
-         * Task:
-         * @return a new image with ........
+         * Task: convert Buffered image to a 8bit color Image
+         * @return a new 8bit color image
          * */
-        Image res = new Image("demo");
+        Image res = new Image(getHeight(), getWidth());
+
+        for (int x = 0; x < getWidth(); x++) {
+            for (int y = 0; y < getHeight(); y++) {
+
+                int r = getPixelR(x,y);
+                r = r & (7<<5);            // marking all the bits of Red to 0 except first 3 bits
+                int g = getPixelG(x,y);
+                g =  g & (7<<5);           // marking all the bits of Green to 0 except first 3 bits
+                int b = getPixelB(x,y);
+                b = b & (3<<5);             // marking all the bits of Green to 0 except first 2 bits
+
+//                System.out.println(r + "\t" + g + "\t" + b);
+
+                res.setPixel(x, y, r, g, b);
+            }
+        }
 
         return res;
     }
@@ -104,8 +120,6 @@ public class Image {
                 int g = getPixelG(ax, ay);
                 int b = getPixelB(ax, ay);
                 res.setPixel(x, y, r, g, b);
-
-
             }
         }
 

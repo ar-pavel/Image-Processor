@@ -125,8 +125,15 @@ public class ImageProcessing {
         // save shrunk image
         shrunkImage.save("shrunkImage.png");
 
+        // converting the image to 8 bit
+        Image eightBitImage = shrunkImage.to8bit();
+        eightBitImage.save("8BitImage.png");
 
 
+
+        // resizing back to the original image size
+        Image finalImage = eightBitImage.resizedImage(height, width);
+        finalImage.save("Final Result.png");
 
 
     }
@@ -134,17 +141,17 @@ public class ImageProcessing {
 
     public static void main(String args[]) {
 
-        // load an image
+//         load an image
         image = new Image(readImage());
 
         // print height and width
-        System.out.println("Height is " + image.getHeight() + " and width is " + image.getWidth());
+//        System.out.println("Height is " + image.getHeight() + " and width is " + image.getWidth());
 
         height = image.getHeight();
         width = image.getWidth();
-
-        // create another image for output
-        // it has the same size as original image
+//
+//         create another image for output
+//         it has the same size as original image
 
 //        new ImageProcessing().generateGrayScale();
 //        new ImageProcessing().generateRed();
@@ -153,6 +160,8 @@ public class ImageProcessing {
 //        new ImageProcessing().resizedImage(1400, 1800);
 
         new ImageProcessing().processToAssignment();
+
+
 
 
 
