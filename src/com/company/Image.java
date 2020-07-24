@@ -104,10 +104,10 @@ public class Image {
 
         int curHeight = this.image.getHeight();
         int curWidth = this.image.getWidth();
-
-        System.out.println("Image Transformation Info : ");
-        System.out.println("Original image height : " + curHeight + ",\tNew image height : " + newHeight);
-        System.out.println("Original image width : " + curWidth + ",\tNew image width : " + newWidth);
+//
+//        System.out.println("Image Transformation Info : ");
+//        System.out.println("Original image height : " + curHeight + ",\tNew image height : " + newHeight);
+//        System.out.println("Original image width : " + curWidth + ",\tNew image width : " + newWidth);
 
         Image res = new Image(newHeight, newWidth);
 
