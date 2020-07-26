@@ -111,6 +111,7 @@ public class ImageProcessing {
          * */
 
 
+        // shrinking image
         Image shrunkImage = image.resizedImage(720, 720 * width / height);
 
         // Print shrinking info
@@ -157,7 +158,7 @@ public class ImageProcessing {
         new ImageProcessing().generateRed();
         new ImageProcessing().generateBlue();
         new ImageProcessing().generateGreen();
-        new ImageProcessing().resizedImage(1400, 1800);
+//        new ImageProcessing().resizedImage(1400, 1800);
 
         new ImageProcessing().processToAssignment();
 

@@ -83,7 +83,7 @@ public class Image {
                 int g = getPixelG(x,y);
                 g =  g & (7<<5);           // marking all the bits of Green to 0 except first 3 bits
                 int b = getPixelB(x,y);
-                b = b & (3<<5);             // marking all the bits of Green to 0 except first 2 bits
+                b = b & (3<<6);             // marking all the bits of Green to 0 except first 2 bits
 
 //                System.out.println(r + "\t" + g + "\t" + b);
 
@@ -101,6 +101,8 @@ public class Image {
          * @param newWidth Width of the the new Image to be
          * @return a new image with correspond size
          * */
+
+        // this method uses nearest-neighbor interpolation to resize the image
 
         int curHeight = this.image.getHeight();
         int curWidth = this.image.getWidth();
