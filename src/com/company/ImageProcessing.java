@@ -64,7 +64,7 @@ public class ImageProcessing {
 
             }
         }
-        blue.save("b.png");
+        blue.save("blue.png");
     }
 
     public void generateRed(){
@@ -77,7 +77,7 @@ public class ImageProcessing {
 
             }
         }
-        red.save("r.png");
+        red.save("red.png");
     }
 
     public void generateGreen(){
@@ -90,7 +90,7 @@ public class ImageProcessing {
 
             }
         }
-        green.save("g.png");
+        green.save("green.png");
 
     }
 

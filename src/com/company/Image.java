@@ -90,7 +90,6 @@ public class Image {
                 res.setPixel(x, y, r, g, b);
             }
         }
-
         return res;
     }
 
@@ -103,7 +102,6 @@ public class Image {
          * */
 
         // this method uses nearest-neighbor interpolation to resize the image
-
         int curHeight = this.image.getHeight();
         int curWidth = this.image.getWidth();
 //
@@ -115,8 +113,8 @@ public class Image {
 
         for (int x = 0; x < newWidth; x++) {
             for (int y = 0; y < newHeight; y++) {
-                int ay = (int) ceil(y * (curHeight-1) / (newHeight-1));
-                int ax = (int) ceil(x * (curWidth-1) / (newWidth-1));
+                int ay = (int) ceil((y * curHeight - (y * 1)) / (newHeight - 1 > 0 ? (newHeight - 1) : 1));
+                int ax = (int) ceil(x * (curWidth - 1) / (newWidth - 1 > 0 ? newWidth : 1));
 //                System.err.println("x : " + x + ", ax : " + ax + ", y : " + y + ", ay : "+ ay);
                 int r = getPixelR(ax, ay);
                 int g = getPixelG(ax, ay);
@@ -124,7 +122,6 @@ public class Image {
                 res.setPixel(x, y, r, g, b);
             }
         }
-
         return res;
     }
 
